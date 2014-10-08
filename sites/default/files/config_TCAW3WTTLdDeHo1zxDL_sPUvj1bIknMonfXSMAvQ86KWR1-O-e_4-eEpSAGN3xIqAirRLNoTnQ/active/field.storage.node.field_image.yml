@@ -12,7 +12,7 @@ type: image
 settings:
   uri_scheme: public
   default_image:
-    fid: null
+    fid: 0
     alt: ''
     title: ''
     width: null
@@ -23,7 +23,7 @@ settings:
   target_bundle: null
 module: image
 locked: false
-cardinality: 1
+cardinality: -1
 translatable: true
 indexes:
   target_id:

@@ -8,7 +8,7 @@ dependencies:
     - classy
 id: classy_breadcrumbs
 theme: classy
-region: sidebar_first
+region: '-1'
 weight: -5
 provider: null
 plugin: system_breadcrumb_block
