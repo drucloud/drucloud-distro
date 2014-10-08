@@ -1,0 +1,23 @@
+uuid: 91035028-f1c8-4aae-8e5d-930ee13c42bb
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - classy
+id: classy_content
+theme: classy
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  visibility: {  }
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+  cache:
+    max_age: 0
+    contexts: {  }

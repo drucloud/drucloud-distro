@@ -1,0 +1,11 @@
+uuid: e129ae3f-b4d3-403f-a507-7e34d6c9b8bd
+name: drucloud
+mail: keithyau.hk@gmail.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: node
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en

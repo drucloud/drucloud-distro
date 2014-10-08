@@ -1,0 +1,27 @@
+uuid: ab96bd19-7e7c-4192-a100-0b26a2a4d308
+langcode: en
+status: true
+dependencies:
+  entity:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - classy
+id: classy_main_menu
+theme: classy
+region: primary_menu
+weight: 0
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  visibility: {  }
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  provider: system
+  label_display: '0'
+  cache:
+    max_age: -1
+    contexts: {  }
+  level: 1
+  depth: 1
