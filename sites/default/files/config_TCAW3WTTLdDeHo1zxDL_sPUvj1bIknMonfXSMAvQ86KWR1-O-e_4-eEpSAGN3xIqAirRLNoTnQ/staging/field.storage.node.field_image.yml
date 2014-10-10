@@ -1,4 +1,4 @@
-uuid: 4e54251f-4cc8-4d2a-8100-d3eed261fa4f
+uuid: f468ca43-4c8f-4125-9b02-2b6108bfe56a
 langcode: en
 status: true
 dependencies:
@@ -12,7 +12,7 @@ type: image
 settings:
   uri_scheme: public
   default_image:
-    fid: 0
+    fid: null
     alt: ''
     title: ''
     width: null
@@ -23,7 +23,7 @@ settings:
   target_bundle: null
 module: image
 locked: false
-cardinality: -1
+cardinality: 1
 translatable: true
 indexes:
   target_id:

@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Default theme implementation of a geolocation for latitude, longitude.
+ *
+ * Available variables:
+ * - lat: The latitude value.
+ * - lng: The longitude value.
+ *
+ * @see template_preprocess()
+ *
+ * @ingroup themeable
+ */
+#}
+{% spaceless %}
+    <div class="geolocation-item">
+        <span class="geolocation-lat">{{ lat }}</span>,<span class="geolocation-lng">{{ lng }}</span>
+    </div>
+{% endspaceless %}

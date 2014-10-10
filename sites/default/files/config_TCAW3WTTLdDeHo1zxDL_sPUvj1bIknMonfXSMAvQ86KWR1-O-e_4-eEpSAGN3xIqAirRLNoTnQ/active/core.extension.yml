@@ -1,6 +1,5 @@
 module:
   block: -5
-  basic_auth: 0
   block_content: 0
   breakpoint: 0
   ckeditor: 0
@@ -17,7 +16,7 @@ module:
   field_ui: 0
   file: 0
   filter: 0
-  hal: 0
+  geolocation: 0
   help: 0
   history: 0
   image: 0
@@ -28,15 +27,16 @@ module:
   path: 0
   quickedit: 0
   rdf: 0
-  rest: 0
   search: 0
-  serialization: 0
+  search_api: 0
+  search_api_db: 0
   shortcut: 0
   system: 0
   taxonomy: 0
   text: 0
   toolbar: 0
   tour: 0
+  update: 0
   user: 0
   views_ui: 0
   views: 10

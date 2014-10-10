@@ -1,0 +1,227 @@
+<?php
+
+/**
+ * @file
+ * Provides a rich framework for creating searches.
+ */
+
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\search_api\Exception\SearchApiException;
+use Drupal\search_api\Plugin\SearchApi\Datasource\ContentEntityDatasource;
+use Drupal\search_api\Utility\Utility;
+
+/**
+ * Implements hook_help().
+ */
+function search_api_help($route_name) {
+  switch ($route_name) {
+    case 'search_api.overview':
+      return t('Below is a list of indexes grouped by the server they are associated with. A server is the definition of the actual indexing, querying and storage engine (e.g., an Apache Solr server, the database, …). An index is defines the indexed content (e.g., all content and all comments on "Article" posts).');
+  }
+}
+
+/**
+ * Implements hook_cron().
+ *
+ * This will first execute any pending server tasks. After that, items will
+ * be indexed on all enabled indexes with a non-zero cron limit. Indexing will
+ * run for the time set in the cron_limit config setting (defaulting to 15
+ * seconds), but will at least index one batch of items on each index.
+ */
+function search_api_cron() {
+  // Execute pending server tasks.
+  Utility::getServerTaskManager()->execute();
+
+  // Load all enabled, not read-only indexes.
+  $conditions = array(
+    'status' => TRUE,
+    'read_only' => FALSE,
+  );
+  /** @var \Drupal\search_api\Index\IndexInterface[] $indexes */
+  $indexes = entity_load_multiple_by_properties('search_api_index', $conditions);
+  if (!$indexes) {
+    return;
+  }
+
+  // Remember servers which threw an exception.
+  $ignored_servers = array();
+
+  // Continue indexing, one batch from each index, until the time is up, but at
+  // least index one batch per index.
+  $settings = \Drupal::config('search_api.settings');
+  $default_cron_limit = $settings->get('cron_limit');
+  $end = time() + $settings->get('cron_worker_runtime');
+  $first_pass = TRUE;
+  while (TRUE) {
+    if (!$indexes) {
+      break;
+    }
+    foreach ($indexes as $id => $index) {
+      if (!$first_pass && time() >= $end) {
+        break 2;
+      }
+      if (!empty($ignored_servers[$index->getServerId()])) {
+        continue;
+      }
+
+      $limit = $index->getOption('cron_limit', $default_cron_limit);
+      $num = 0;
+      if ($limit) {
+        try {
+          $num = $index->index($limit);
+          if ($num) {
+            $variables = array(
+              '@num' => $num,
+              '%name' => $index->label(),
+            );
+            watchdog('search_api', 'Indexed @num items for index %name.', $variables, WATCHDOG_INFO);
+          }
+        }
+        catch (SearchApiException $e) {
+          // Exceptions will probably be caused by the server in most cases.
+          // Therefore, don't index for any index on this server.
+          $ignored_servers[$index->getServerId()] = TRUE;
+          $vars['%index'] = $index->label();
+          watchdog_exception('search_api', $e, '%type while trying to index items on %index: !message in %function (line %line of %file).', $vars);
+        }
+      }
+      if (!$num) {
+        // Couldn't index any items => stop indexing for this index in this
+        // cron run.
+        unset($indexes[$id]);
+      }
+    }
+    $first_pass = FALSE;
+  }
+}
+
+/**
+ * Implements hook_entity_insert().
+ *
+ * Adds entries for all languages of the new entity to the tracking table for
+ * each index that tracks entities of this type.
+ */
+function search_api_entity_insert(EntityInterface $entity) {
+  // Check if the entity is a content entity.
+  if ($entity instanceof ContentEntityInterface) {
+    $indexes = ContentEntityDatasource::getIndexesForEntity($entity);
+    if (!$indexes) {
+      return;
+    }
+
+    // Compute the item IDs for all languages of the entity.
+    $item_ids = array();
+    $entity_id = $entity->id();
+    foreach (array_keys($entity->getTranslationLanguages()) as $langcode) {
+      $item_ids[] = $entity_id . ':' . $langcode;
+    }
+    $datasource_id = 'entity:' . $entity->getEntityTypeId();
+    foreach ($indexes as $index) {
+      $index->trackItemsInserted($datasource_id, $item_ids);
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_update().
+ *
+ * Updates the corresponding tracking table entries for each index that tracks
+ * this entity.
+ *
+ * Also takes care of new or deleted translations.
+ */
+function search_api_entity_update(EntityInterface $entity) {
+  // Check if the entity is a content entity.
+  if ($entity instanceof ContentEntityInterface) {
+    $indexes = ContentEntityDatasource::getIndexesForEntity($entity);
+    if (!$indexes) {
+      return;
+    }
+
+    // Compare old and new languages for the entity to identify inserted,
+    // updated and deleted translations (and, therefore, search items).
+    $entity_id = $entity->id();
+    $combine_id = function($langcode) use ($entity_id) {
+      return $entity_id . ':' . $langcode;
+    };
+    $inserted_item_ids = array();
+    $updated_item_ids = array_keys($entity->getTranslationLanguages());
+    $deleted_item_ids = array();
+    $old_translations = array_keys($entity->original->getTranslationLanguages());
+    foreach ($old_translations as $langcode) {
+      if (!in_array($langcode, $updated_item_ids)) {
+        $deleted_item_ids[] = $langcode;
+      }
+    }
+    foreach ($updated_item_ids as $i => $langcode) {
+      if (!in_array($langcode, $old_translations)) {
+        unset($updated_item_ids[$i]);
+        $inserted_item_ids[] = $langcode;
+      }
+    }
+
+    $datasource_id = 'entity:' . $entity->getEntityTypeId();
+    $inserted_item_ids = array_map($combine_id, $inserted_item_ids);
+    $updated_item_ids = array_map($combine_id, $updated_item_ids);
+    $deleted_item_ids = array_map($combine_id, $deleted_item_ids);
+    foreach ($indexes as $index) {
+      if ($inserted_item_ids) {
+        $index->trackItemsInserted($datasource_id, $inserted_item_ids);
+      }
+      if ($updated_item_ids) {
+        $index->trackItemsUpdated($datasource_id, $updated_item_ids);
+      }
+      if ($deleted_item_ids) {
+        $index->trackItemsDeleted($datasource_id, $deleted_item_ids);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_delete().
+ *
+ * Deletes all entries for this entity from the tracking table for each index
+ * that tracks this entity type.
+ */
+function search_api_entity_delete(EntityInterface $entity) {
+  // Check if the entity is a content entity.
+  if ($entity instanceof ContentEntityInterface) {
+    $indexes = ContentEntityDatasource::getIndexesForEntity($entity);
+    if (!$indexes) {
+      return;
+    }
+
+    // Remove the search items for all the entity's translations.
+    $item_ids = array();
+    $entity_id = $entity->id();
+    foreach (array_keys($entity->getTranslationLanguages()) as $langcode) {
+      $item_ids[] = $entity_id . ':' . $langcode;
+    }
+    $datasource_id = 'entity:' . $entity->getEntityTypeId();
+    foreach ($indexes as $index) {
+      $index->trackItemsDeleted($datasource_id, $item_ids);
+    }
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function search_api_theme() {
+  return array(
+    'search_api_admin_fields_table' => array(
+      'render element' => 'element',
+      'file' => 'search_api.theme.inc',
+    ),
+    'search_api_server' => array(
+      'variables' => array('server' => NULL),
+      'file' => 'search_api.theme.inc',
+    ),
+    'search_api_index' => array(
+      'variables' => array('index' => NULL),
+      'file' => 'search_api.theme.inc',
+    ),
+  );
+}

@@ -1,0 +1,91 @@
+search_api.index.*:
+  type: mapping
+  label : 'Search index'
+  mapping:
+    machine_name:
+      type: string
+      label: 'Machine name'
+    name:
+      type: label
+      label: 'Name'
+    uuid:
+      type: string
+      label: 'UUID'
+    description:
+      type: text
+      label: 'Description'
+    read_only:
+      type: boolean
+      label: 'Read-only'
+    options:
+      type: mapping
+      label: 'Options'
+      mapping:
+        fields:
+          type: sequence
+          label: 'Indexed fields'
+          sequence:
+            - type: mapping
+              label: 'field'
+              mapping:
+                type:
+                  type: string
+                  label: "Type of field"
+        additional fields:
+          type: sequence
+          label: 'Included additional fields'
+        cron_limit:
+          type: integer
+          label: 'Cron batch size'
+        index_directly:
+          type: boolean
+          label: 'Index items immediately'
+        processors:
+          type: sequence
+          label: 'Processor settings'
+          sequence:
+            - type: mapping
+              label: 'A processor'
+              mapping:
+                status:
+                  type: string
+                  label: 'Status of the processor'
+                weight:
+                  type: integer
+                  label: 'The weight of the processor'
+                processorPluginId:
+                  type: string
+                  label: 'The plugin ID of the processor'
+                settings:
+                  type: search_api.processor.plugin.[%parent.processorPluginId]
+    datasources:
+      type: sequence
+      label: 'Datasource plugin IDs'
+      sequence:
+        - type: string
+    datasource_configs:
+      type: sequence
+      label: 'Datasource plugin configurations'
+      sequence:
+        # @todo Update when https://www.drupal.org/node/2291073 is fixed.
+        - type: search_api.datasource.plugin.[%key]
+          label: 'Datasource plugin configuration'
+    tracker:
+      type: string
+      label: 'Tracker plugin ID'
+    tracker_config:
+      label: 'Tracker config plugin'
+      # @todo Update when https://www.drupal.org/node/2291073 is fixed.
+      type: search_api.tracker.plugin.[%parent.tracker]
+    server:
+      type: string
+      label: 'Server machine name'
+    status:
+      type: boolean
+      label: 'Status'
+    langcode:
+      type: string
+      label: 'Language code'
+    dependencies:
+      type: config_dependencies
+      label: 'Dependencies'

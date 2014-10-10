@@ -1,0 +1,12 @@
+machine_name: database_search_server
+name: 'Database search server'
+description: 'A server used for testing.'
+backend: search_api_db
+backend_config:
+  min_chars: 3
+  database: 'default:default'
+status: 1
+langcode: en
+dependencies:
+  module:
+    - search_api_db

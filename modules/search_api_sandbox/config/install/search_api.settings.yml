@@ -1,0 +1,3 @@
+cron_limit: 50
+cron_worker_runtime: 15
+default_tracker: 'default_tracker'

@@ -1,4 +1,4 @@
-uuid: 54f278f0-0ec7-4c64-bf22-34003d6bc28c
+uuid: deba27a1-457c-4c2c-840f-150a022104df
 langcode: en
 status: true
 dependencies: {  }
@@ -104,7 +104,4 @@ permissions:
   - 'access user profiles'
   - 'access all views'
   - 'administer views'
-  - 'restful delete entity:node'
-  - 'restful get entity:node'
-  - 'restful patch entity:node'
-  - 'restful post entity:node'
+  - 'administer search_api'

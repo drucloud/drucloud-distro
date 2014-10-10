@@ -1,0 +1,20 @@
+services:
+  plugin.manager.search_api.backend:
+    class: Drupal\search_api\Backend\BackendPluginManager
+    parent: default_plugin_manager
+
+  plugin.manager.search_api.datasource:
+    class: Drupal\search_api\Datasource\DatasourcePluginManager
+    parent: default_plugin_manager
+
+  plugin.manager.search_api.processor:
+    class: Drupal\search_api\Processor\ProcessorPluginManager
+    parent: default_plugin_manager
+
+  plugin.manager.search_api.tracker:
+    class: Drupal\search_api\Tracker\TrackerPluginManager
+    parent: default_plugin_manager
+
+  entity.search_api_server.task_manager:
+    class: Drupal\search_api\Task\ServerTaskManager
+    arguments: ['@database', '@entity.manager']

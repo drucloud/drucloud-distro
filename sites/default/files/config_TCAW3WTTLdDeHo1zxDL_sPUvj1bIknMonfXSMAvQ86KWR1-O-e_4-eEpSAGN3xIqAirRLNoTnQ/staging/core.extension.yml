@@ -11,12 +11,15 @@ module:
   contextual: 0
   datetime: 0
   dblog: 0
+  devel: 0
+  devel_generate: 0
   editor: 0
   entity_reference: 0
   field: 0
   field_ui: 0
   file: 0
   filter: 0
+  geolocation: 0
   hal: 0
   help: 0
   history: 0
@@ -30,6 +33,8 @@ module:
   rdf: 0
   rest: 0
   search: 0
+  search_api: 0
+  search_api_db: 0
   serialization: 0
   shortcut: 0
   system: 0
@@ -37,6 +42,7 @@ module:
   text: 0
   toolbar: 0
   tour: 0
+  update: 0
   user: 0
   views_ui: 0
   views: 10

@@ -1,4 +1,4 @@
-uuid: 9792509d-31b2-4c7a-a900-f330f549d828
+uuid: 5e33940b-a21b-4747-be00-e59724fcdf9f
 langcode: en
 status: true
 dependencies:
@@ -6,11 +6,13 @@ dependencies:
     - field.field.node.article.body
     - field.field.node.article.comment
     - field.field.node.article.field_image
+    - field.field.node.article.field_location
     - field.field.node.article.field_tags
     - node.type.article
   module:
     - comment
     - entity_reference
+    - geolocation
     - image
     - path
     - taxonomy
@@ -83,5 +85,10 @@ content:
     weight: 30
     settings: {  }
     third_party_settings: {  }
+  field_location:
+    weight: 31
+    settings: {  }
+    third_party_settings: {  }
+    type: geolocation_latlng
 hidden: {  }
 third_party_settings: {  }

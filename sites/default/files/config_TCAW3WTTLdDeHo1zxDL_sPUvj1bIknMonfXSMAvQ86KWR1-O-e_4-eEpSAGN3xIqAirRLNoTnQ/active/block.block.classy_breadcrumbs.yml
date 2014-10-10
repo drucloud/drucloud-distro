@@ -1,4 +1,4 @@
-uuid: 1cbe7ef6-e7fd-456a-a800-b1d695d6ac72
+uuid: 2bc4de5b-f5b3-4e35-ae01-1caccff9307d
 langcode: en
 status: false
 dependencies:
@@ -8,7 +8,7 @@ dependencies:
     - classy
 id: classy_breadcrumbs
 theme: classy
-region: '-1'
+region: sidebar_first
 weight: -5
 provider: null
 plugin: system_breadcrumb_block

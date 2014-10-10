@@ -1,0 +1,38 @@
+search_api.backend.plugin.search_api_db:
+  type: mapping
+  label: 'Search API DB settings'
+  mapping:
+    database:
+      type: 'string'
+      label: 'Name of the database we are connecting to'
+    min_chars:
+      type: 'integer'
+      label: '@todo'
+    field_tables:
+      type: sequence
+      label: 'Field tables'
+      sequence:
+        - type: sequence
+          label: 'Field table'
+          sequence:
+            - type: mapping
+              label: 'Field'
+              mapping:
+                table:
+                  type: 'string'
+                  label: 'The name of the table in the database'
+                column:
+                  type: 'string'
+                  label: 'The column of the field'
+                type:
+                  type: 'string'
+                  label: 'The type of the field'
+                boost:
+                  type: 'float'
+                  label: 'The boost level for the field'
+    index_tables:
+      type: sequence
+      label: 'Index tables'
+      sequence:
+        - type: 'string'
+          label: 'Index table'

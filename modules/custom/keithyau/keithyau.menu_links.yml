@@ -1,0 +1,5 @@
+keithyau.keithyau:
+  title: keithyau demo link
+  description: 'This is a demo link'
+  parent: system.admin_structure
+  route_name: keithyau.keithyau

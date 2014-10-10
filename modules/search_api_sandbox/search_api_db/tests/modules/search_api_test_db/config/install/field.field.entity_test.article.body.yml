@@ -1,0 +1,17 @@
+id: entity_test.article.body
+status: true
+langcode: en
+field_name: body
+entity_type: entity_test
+bundle: article
+label: Body
+description: ''
+required: false
+default_value: {  }
+default_value_function: ''
+settings:
+  display_summary: true
+dependencies:
+  entity:
+    - field.storage.entity_test.body
+field_type: text_with_summary
