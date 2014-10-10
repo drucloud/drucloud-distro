@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Default microdata theme implementation for a geolocation with latitude, longitude.
+ *
+ * Available variables:
+ * - lat: The latitude value.
+ * - lng: The longitude value.
+ *
+ * @see template_preprocess()
+ *
+ * @ingroup themeable
+ */
+#}
+{% spaceless %}
+    <div itemprop="location">
+      <span itemscope itemtype="http://schema.org/Place">
+        <div itemprop="geo">
+          <span itemscope itemtype="http://schema.org/GeoCoordinates">
+            <span property="latitude" content="{{ lat }}">{{ lat }}</span>,<span property="longitude" content="{{ lng }}">{{ lng }}</span>
+          </span>
+        </div>
+      </span>
+    </div>
+{% endspaceless %}

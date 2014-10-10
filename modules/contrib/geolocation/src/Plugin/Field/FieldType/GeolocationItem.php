@@ -99,7 +99,7 @@ class GeolocationItem extends FieldItemBase {
   public function isEmpty() {
     $lat = $this->get('lat')->getValue();
     $lng = $this->get('lng')->getValue();
-    return $lat === NULL || $lat === '' || $lng === '' || $lng === '';
+    return $lat === NULL || $lat === '' || $lng === NULL || $lng === '';
   }
 
   /**

@@ -86,6 +86,15 @@ class GeolocationFieldTest extends WebTestBase {
     );
 
     $this->drupalPostForm(NULL, $edit, t('Save'));
-    $this->assertRaw('<span class="geolocation-lat">' . $lat . '</span>,<span class="geolocation-lng">' . $lng . '</span>', 'The geolocation lat,lng pair was found on the article node page.');
+    $expected =  '<div itemprop="location">';
+    $expected .= '<span itemscope itemtype="http://schema.org/Place">';
+    $expected .= '<div itemprop="geo">';
+    $expected .= '<span itemscope itemtype="http://schema.org/GeoCoordinates">';
+    $expected .= '<span property="latitude" content="' . $lat . '">' . $lat . '</span>,<span property="longitude" content="' . $lng . '">' . $lng . '</span>';
+    $expected .= '</span>';
+    $expected .= '</div>';
+    $expected .= '</span>';
+    $expected .= '</div>';
+    $this->assertRaw($expected, 'Default microdata theme implementation for a geolocation with latitude, longitude was found on the article node page.');
   }
 }
