@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 id: administrator
 label: Administrator
-weight: 2
+weight: -7
 permissions:
   - 'administer blocks'
   - 'administer comment types'
