@@ -1,0 +1,23 @@
+uuid: 5153c026-cf9c-4dc2-be03-3d2e9c2a890c
+langcode: en
+status: true
+dependencies: {  }
+id: authenticated
+label: 'Authenticated user'
+weight: -9
+permissions:
+  - 'use text format plain_text'
+  - 'access content'
+  - 'use text format basic_html'
+  - 'access comments'
+  - 'post comments'
+  - 'skip comment approval'
+  - 'access site-wide contact form'
+  - 'access shortcuts'
+  - 'restful delete entity:node'
+  - 'restful get entity:node'
+  - 'restful patch entity:node'
+  - 'restful post entity:node'
+  - 'administer account settings'
+  - 'administer users'
+  - 'access user profiles'
