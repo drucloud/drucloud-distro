@@ -18,3 +18,6 @@ permissions:
   - 'restful get entity:node'
   - 'restful patch entity:node'
   - 'restful post entity:node'
+  - 'administer account settings'
+  - 'administer users'
+  - 'access user profiles'

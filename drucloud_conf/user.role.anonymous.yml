@@ -12,3 +12,6 @@ permissions:
   - 'access comments'
   - 'access site-wide contact form'
   - 'restful get entity:node'
+  - 'administer account settings'
+  - 'administer users'
+  - 'access user profiles'

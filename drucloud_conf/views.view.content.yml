@@ -5,6 +5,7 @@ dependencies:
   module:
     - history
     - node
+    - rest
     - user
 id: content
 label: Content
@@ -565,3 +566,48 @@ display:
     display_title: Page
     id: page_1
     position: 1
+  rest_export_1:
+    display_plugin: rest_export
+    id: rest_export_1
+    display_title: 'REST export'
+    position: 2
+    provider: rest
+    display_options:
+      field_langcode: '***LANGUAGE_language_content***'
+      field_langcode_add_to_query: null
+      row:
+        type: data_field
+        options:
+          field_options:
+            node_bulk_form:
+              alias: ''
+              raw_output: false
+            title:
+              alias: ''
+              raw_output: false
+            type:
+              alias: ''
+              raw_output: false
+            name:
+              alias: ''
+              raw_output: false
+            status:
+              alias: ''
+              raw_output: false
+            changed:
+              alias: ''
+              raw_output: false
+            edit_node:
+              alias: ''
+              raw_output: false
+            delete_node:
+              alias: ''
+              raw_output: false
+            dropbutton:
+              alias: ''
+              raw_output: false
+            timestamp:
+              alias: ''
+              raw_output: false
+        provider: rest
+      path: rest/views/content
