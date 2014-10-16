@@ -1,0 +1,73 @@
+uuid: ad3e8618-71c5-4509-8f08-8e266a543862
+langcode: en
+status: true
+dependencies:
+  entity:
+    - field.field.node.article.body
+    - field.field.node.article.comment
+    - field.field.node.article.field_geofield
+    - field.field.node.article.field_image
+    - field.field.node.article.field_location
+    - field.field.node.article.field_tags
+    - node.type.article
+  module:
+    - comment
+    - geofield
+    - geolocation
+    - image
+    - taxonomy
+    - text
+    - user
+id: node.article.default
+label: null
+targetEntityType: node
+bundle: article
+mode: default
+content:
+  field_image:
+    type: image
+    weight: -1
+    settings:
+      image_style: large
+      image_link: ''
+    third_party_settings: {  }
+    label: hidden
+  body:
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    label: hidden
+  field_tags:
+    type: taxonomy_term_reference_link
+    weight: 10
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  comment:
+    label: above
+    type: comment_default
+    weight: 20
+    settings:
+      pager_id: '0'
+    third_party_settings: {  }
+  links:
+    weight: 100
+  field_location:
+    weight: 101
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: geolocation_latlng
+  field_geofield:
+    weight: 102
+    label: above
+    settings:
+      output_format: wkt
+    third_party_settings: {  }
+    type: geofield_formatter_default
+hidden:
+  langcode: true
+  field_image: true
+  field_tags: true
+third_party_settings: {  }

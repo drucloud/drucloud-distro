@@ -1,0 +1,104 @@
+uuid: 5e33940b-a21b-4747-be00-e59724fcdf9f
+langcode: en
+status: true
+dependencies:
+  entity:
+    - field.field.node.article.body
+    - field.field.node.article.comment
+    - field.field.node.article.field_geofield
+    - field.field.node.article.field_image
+    - field.field.node.article.field_location
+    - field.field.node.article.field_tags
+    - node.type.article
+  module:
+    - comment
+    - entity_reference
+    - geofield
+    - geolocation
+    - image
+    - path
+    - taxonomy
+    - text
+id: node.article.default
+targetEntityType: node
+bundle: article
+mode: default
+content:
+  title:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  body:
+    type: text_textarea_with_summary
+    weight: 1
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  field_tags:
+    type: taxonomy_autocomplete
+    weight: 3
+    settings:
+      size: 60
+      autocomplete_route_name: taxonomy.autocomplete
+      placeholder: ''
+    third_party_settings: {  }
+  field_image:
+    type: image_image
+    weight: 4
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      autocomplete_type: tags
+      placeholder: ''
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 15
+    settings:
+      display_label: '1'
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 16
+    settings:
+      display_label: '1'
+    third_party_settings: {  }
+  comment:
+    type: comment_default
+    weight: 20
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    settings: {  }
+    third_party_settings: {  }
+  field_location:
+    type: geolocation_latlng
+    weight: 31
+    settings: {  }
+    third_party_settings: {  }
+  field_geofield:
+    type: geofield_widget_default
+    weight: 32
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
+third_party_settings: {  }
