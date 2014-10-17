@@ -1,0 +1,14 @@
+<?php
+
+/*
+ * Custom toolbar by role.
+ *
+ */
+function drucloud_toolbar_toolbar_alter(&$items) {
+
+  $user = \Drupal::currentUser();
+
+  //Remove manage button if user is not admin
+  if ( in_array('editor', $user->getRoles(), TRUE) )  unset($items['administration']);
+
+}

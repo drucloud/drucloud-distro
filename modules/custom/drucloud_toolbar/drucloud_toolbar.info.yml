@@ -1,0 +1,7 @@
+name: drucloud_toolbar
+description: Custom toolbar for drucloud
+core: 8.x
+package: drucloud
+dependeicies:
+- toolbar
+type: module
