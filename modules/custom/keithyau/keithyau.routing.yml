@@ -1,0 +1,15 @@
+keithyau.demo:
+  path: '/keithyau'
+  defaults:
+    _content: '\Drupal\keithyau\Controller\keithyauController::keithyau'
+    _title: 'Keithyau Demo'
+  requirements:
+    _permission: 'access content'
+
+keithyau.form:
+  path: '/keithyau/form'
+  defaults:
+    _form: '\Drupal\keithyau\Form\keithyauForm'
+    _title: 'Keithyau Form'
+  requirements:
+    _permission: 'access content'

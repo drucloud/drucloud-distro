@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Defines a simple geolocation field type.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function geolocation_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.geolocation':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The Geolocation module allows you to create fields that contain geographical locations. See the <a href="!field">Field module help</a> and the <a href="!field_ui">Field UI help</a> pages for general information on fields and how to create and manage them.', array('!field' => \Drupal::url('help.page', array('name' => 'field')), '!field_ui' => \Drupal::url('help.page', array('name' => 'field_ui')))) . '</p>';
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function geolocation_theme() {
+  return array(
+    'geolocation_formatter_geolocation_latlng' => array(
+      'variables' => array('lat' => NULL, 'lng' => NULL),
+      'template' => 'geolocation-formatter-geolocation-latlng',
+    ),
+  );
+}

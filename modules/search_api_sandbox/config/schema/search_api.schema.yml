@@ -1,0 +1,13 @@
+search_api.settings:
+  type: mapping
+  label: 'Search API settings'
+  mapping:
+    cron_limit:
+      type: integer
+      label: 'Default cron batch size'
+    cron_worker_runtime:
+      type: integer
+      label: 'Maximum runtime for the cron worker'
+    default_tracker:
+      type: string
+      label: 'The default tracker plugin'

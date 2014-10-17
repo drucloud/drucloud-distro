@@ -1,0 +1,9 @@
+name: keithyau
+description: Keith's test module
+core: 8.x
+package: Custom
+dependeicies:
+- node
+- block
+- devel
+type: module

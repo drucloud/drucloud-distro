@@ -1,0 +1,3 @@
+services:
+  keithyau.keithyau_service:
+    class: Drupal\keithyau\keithyauService

@@ -1,0 +1,10 @@
+name: 'Search API Test Views'
+type: module
+description: 'Support module for Search API Views Tests.'
+package: Search
+dependencies:
+  - search_api
+  - search_api_test_db
+  - views
+core: 8.x
+hidden: true

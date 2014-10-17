@@ -1,0 +1,108 @@
+    {
+       "_links":
+       {
+           "self":
+           {
+               "href": "http://localhost/src/drupal/user/1"
+           },
+           "type":
+           {
+               "href": "http://localhost/src/drupal/rest/type/user/user"
+           }
+       },
+       "uuid":
+       [
+           {
+               "value": "5c6b7423-9d4e-4c52-a405-5ab411ba2143"
+           }
+       ],
+       "langcode":
+       [
+           {
+               "value": "en"
+           }
+       ],
+       "preferred_langcode":
+       [
+           {
+               "value": "en"
+           }
+       ],
+       "preferred_admin_langcode":
+       [
+           {
+               "value": ""
+           }
+       ],
+       "name":
+       [
+           {
+               "value": "keithyau"
+           }
+       ],
+       "pass":
+       [
+           {
+               "value": "$S$EvzjnrbJDNK46p9cT4FvIbAZRU/Q6TTcB6bGJWgNJJcN41LfMMhA"
+           }
+       ],
+       "mail":
+       [
+           {
+               "value": "admin@example.com"
+           }
+       ],
+       "timezone":
+       [
+           {
+               "value": "Asia/Hong_Kong"
+           }
+       ],
+       "status":
+       [
+           {
+               "value": "1"
+           }
+       ],
+       "created":
+       [
+           {
+               "value": "1412768870"
+           }
+       ],
+       "changed":
+       [
+           {
+               "value": "1412768870"
+           }
+       ],
+       "access":
+       [
+           {
+               "value": "1413452973"
+           }
+       ],
+       "login":
+       [
+           {
+               "value": "1413452973"
+           }
+       ],
+       "init":
+       [
+           {
+               "value": "admin@example.com"
+           }
+       ],
+       "roles":
+       [
+           {
+               "target_id": "authenticated"
+           },
+           {
+               "target_id": "administrator"
+           }
+       ]
+    }
+
+

@@ -1,0 +1,27 @@
+uuid: 0aa103bf-cec4-4098-a100-be03af1f7628
+langcode: en
+status: true
+dependencies:
+  entity:
+    - system.menu.tools
+  module:
+    - system
+  theme:
+    - classy
+id: classy_tools
+theme: classy
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:tools'
+settings:
+  visibility: {  }
+  id: 'system_menu_block:tools'
+  label: Tools
+  provider: system
+  label_display: visible
+  cache:
+    max_age: -1
+    contexts: {  }
+  level: 1
+  depth: 0
