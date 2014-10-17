@@ -60,6 +60,20 @@ function drucloud_install() {
   // Allow authenticated users to use shortcuts.
   user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('access shortcuts'));
 
+  // DruCloud custom user
+  $roles = array('editor');
+  $new_user = array(
+    'uid'     => NULL,
+    'name'    => 'editor',
+    'pass'    => 'drucloudnow',
+    'mail'    => 'editor' . '@example.drucloud.com',
+    'status'  => 1,
+    'roles' => $roles,
+  );
+
+  $account = entity_create('user', $new_user);
+  $account->save();
+
   // Populate the default shortcut set.
   $shortcut = entity_create('shortcut', array(
     'shortcut_set' => 'default',
