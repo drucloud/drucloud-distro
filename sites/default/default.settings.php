@@ -244,7 +244,6 @@ $databases = array();
  * @endcode
  */
 $config_directories = array();
-$config_directories['drucloud'] = 'drucloud_conf';
 /**
  * Settings:
  *
