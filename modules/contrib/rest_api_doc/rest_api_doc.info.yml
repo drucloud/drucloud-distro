@@ -1,0 +1,15 @@
+name: Self Documenting REST API
+type: module
+description: 'Provides API documentation for your REST endpoints at /api/doc'
+package: Web services
+# core: 8.x
+configure: rest_api_doc.settings
+dependencies:
+  - rest
+  - views
+
+# Information added by Drupal.org packaging script on 2014-10-08
+version: '8.x-1.0-alpha1+10-dev'
+core: '8.x'
+project: 'rest_api_doc'
+datestamp: 1412803608

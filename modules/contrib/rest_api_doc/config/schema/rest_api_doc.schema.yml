@@ -1,0 +1,14 @@
+# Schema for the configuration files of the rest_api_doc module.
+
+rest_api_doc.settings:
+  type: mapping
+  label: 'Self documenting REST API settings'
+  mapping:
+    routes:
+      type: sequence
+      label: 'Routes'
+      sequence:
+        - type: string
+    overview:
+      type: text
+      label: 'REST API documentation overview'

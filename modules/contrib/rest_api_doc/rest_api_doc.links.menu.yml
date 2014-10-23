@@ -1,0 +1,10 @@
+rest_api_doc.configure:
+  title: REST API Documentation
+  description: 'Configure REST API Documentation.'
+  parent: system.admin_config_services
+  route_name: rest_api_doc.settings
+
+rest_api_doc.summary:
+  title: API Documentation
+  description: 'Browse API Documentation.'
+  route_name: rest_api_doc.documentation_summary

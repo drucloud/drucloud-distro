@@ -1,0 +1,7 @@
+access rest_api_doc:
+    title: Access REST API documentation
+    description: Allow to the user to access the REST API documentation.
+
+administer rest_api_doc:
+    title: Administer REST API documentation
+    description: Allow to the user to administer the REST API documentation.

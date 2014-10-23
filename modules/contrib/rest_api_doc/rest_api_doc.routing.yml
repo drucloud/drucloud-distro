@@ -1,0 +1,25 @@
+rest_api_doc.documentation_summary:
+  path: '/api/doc'
+  defaults:
+    _content: '\Drupal\rest_api_doc\Controller\RestApiDocController::summary'
+    _title: 'API Documentation'
+  requirements:
+    _permission: 'access rest_api_doc'
+
+rest_api_doc.documentation_detail:
+  path: '/api/doc/{path}'
+  defaults:
+    _content: '\Drupal\rest_api_doc\Controller\RestApiDocController::routeDetail'
+    _title: 'API Documentation'
+  requirements:
+    _permission: 'access rest_api_doc'
+
+rest_api_doc.settings:
+  path: '/admin/config/services/rest-api-doc'
+  defaults:
+    _form: '\Drupal\rest_api_doc\Form\RestApiDocSettingsForm'
+    _title: 'Self Documenting REST API'
+  requirements:
+    _permission: 'administer rest_api_doc'
+  options:
+    _admin_route: TRUE

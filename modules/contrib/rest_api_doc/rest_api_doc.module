@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Contains main functions for the module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function rest_api_doc_theme() {
+  $return = array();
+
+  $return['rest_api_doc_detail'] = array(
+    'variables' => array(
+      'title' => NULL,
+    ),
+    'template' => 'rest_api_doc_detail',
+  );
+
+  return $return;
+}

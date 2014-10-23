@@ -1,0 +1,6 @@
+services:
+  rest_api_doc.routing_subscriber:
+    class: Drupal\rest_api_doc\EventSubscriber\RoutingSubscriber
+    arguments: ['@state', '@entity.manager', '@views.executable']
+    tags:
+      - { name: event_subscriber }

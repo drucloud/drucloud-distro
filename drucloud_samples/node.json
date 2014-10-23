@@ -1,0 +1,168 @@
+{
+  "_links": {
+    "self": {
+      "href": "http://localhost/src/drucloud-distro/node/1"
+    },
+    "type": {
+      "href": "http://localhost/src/drucloud-distro/rest/type/node/article"
+    },
+    "http://localhost/src/drucloud-distro/rest/relation/node/article/uid": [
+      {
+        "href": "http://localhost/src/drucloud-distro/user/2",
+        "lang": "en"
+      }
+    ],
+    "http://localhost/src/drucloud-distro/rest/relation/node/article/revision_uid": [
+      {
+        "href": "http://localhost/src/drucloud-distro/user/2"
+      }
+    ],
+    "http://localhost/src/drucloud-distro/rest/relation/node/article/field_image": [
+      {
+        "href": "http://localhost/src/drucloud-distro/sites/default/files/field/image/50cuteanimpic6.jpg",
+        "lang": "en"
+      }
+    ]
+  },
+  "uuid": [
+    {
+      "value": "7aa5fb4e-b7eb-47ca-b000-0c84b44ad252"
+    }
+  ],
+  "type": [
+    {
+      "target_id": "article"
+    }
+  ],
+  "langcode": [
+    {
+      "value": "en"
+    }
+  ],
+  "title": [
+    {
+      "value": "testing 123",
+      "lang": "en"
+    }
+  ],
+  "_embedded": {
+    "http://localhost/src/drucloud-distro/rest/relation/node/article/uid": [
+      {
+        "_links": {
+          "self": {
+            "href": "http://localhost/src/drucloud-distro/user/2"
+          },
+          "type": {
+            "href": "http://localhost/src/drucloud-distro/rest/type/user/user"
+          }
+        },
+        "uuid": [
+          {
+            "value": "6af01581-ac51-4876-a400-ea3b7b57d208"
+          }
+        ],
+        "lang": "en"
+      }
+    ],
+    "http://localhost/src/drucloud-distro/rest/relation/node/article/revision_uid": [
+      {
+        "_links": {
+          "self": {
+            "href": "http://localhost/src/drucloud-distro/user/2"
+          },
+          "type": {
+            "href": "http://localhost/src/drucloud-distro/rest/type/user/user"
+          }
+        },
+        "uuid": [
+          {
+            "value": "6af01581-ac51-4876-a400-ea3b7b57d208"
+          }
+        ]
+      }
+    ],
+    "http://localhost/src/drucloud-distro/rest/relation/node/article/field_image": [
+      {
+        "_links": {
+          "self": {
+            "href": "http://localhost/src/drucloud-distro/sites/default/files/field/image/50cuteanimpic6.jpg"
+          },
+          "type": {
+            "href": "http://localhost/src/drucloud-distro/rest/type/file/file"
+          }
+        },
+        "uuid": [
+          {
+            "value": "404ee0e6-6d9c-4754-9200-c50beb9bdc29"
+          }
+        ],
+        "uri": [
+          {
+            "value": "http://localhost/src/drucloud-distro/sites/default/files/field/image/50cuteanimpic6.jpg"
+          }
+        ],
+        "lang": "en"
+      }
+    ]
+  },
+  "status": [
+    {
+      "value": "1",
+      "lang": "en"
+    }
+  ],
+  "created": [
+    {
+      "value": "1413808041",
+      "lang": "en"
+    }
+  ],
+  "changed": [
+    {
+      "value": "1413887742",
+      "lang": "en"
+    }
+  ],
+  "promote": [
+    {
+      "value": "1",
+      "lang": "en"
+    }
+  ],
+  "sticky": [
+    {
+      "value": "0",
+      "lang": "en"
+    }
+  ],
+  "revision_timestamp": [
+    {
+      "value": "1413808041"
+    }
+  ],
+  "revision_log": [
+    {
+      "value": "",
+      "lang": "en"
+    }
+  ],
+  "body": [
+    {
+      "value": "<p>FYI 123</p>\r\n",
+      "format": "basic_html",
+      "summary": "",
+      "lang": "en"
+    }
+  ],
+  "comment": [
+    {
+      "status": "2",
+      "cid": "0",
+      "last_comment_timestamp": "1413808066",
+      "last_comment_name": null,
+      "last_comment_uid": "2",
+      "comment_count": "0",
+      "lang": "en"
+    }
+  ]
+}
